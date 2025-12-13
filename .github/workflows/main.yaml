@@ -36,7 +36,7 @@ on:
         description: "Integrate YTABConfig"
         type: boolean
         required: true
-        default: true
+        default: false
 
       enable_youloop:
         description: "Integrate YouLoop"
