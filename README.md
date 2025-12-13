@@ -26,12 +26,12 @@ There are still some bugs in settings that 2 Gonerino are showing up.
 - **YouPiP** - Picture in Picture mode support
 - **YTUHD** - Unlock higher quality video options
 - **Return YouTube Dislikes** - Restores the dislike counter
-- **DontEatMyContent** - Prevents video description truncation
 - **YouTimeStamp** - Copy video URL with timestamp from video overlay
 - **YouLoop** - Loop video button in video overlay
 
 #### Disabled by Default
 - **YTABConfig** - Configures A/B settings
+- **DontEatMyContent** - Prevents video description truncation
 - **YouMute** - Mute the video sounds in video overlay
 - **YouSpeed** - Change video speeds in video overlay
 - **YouSlider** - Customizes video slider and scrubber
