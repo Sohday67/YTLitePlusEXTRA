@@ -12,16 +12,36 @@ If you have any problems,feel free to open issues!
 There are still some bugs in settings that 2 Gonerino are showing up.
 
 ## Main Features
-- YTLite (eg. Download Videos,No ads,Background Playback)
-- YouMute (Mute the video sounds in video overlay)
-- YouSpeed (Change video speeds in video overlay)
-- YTABConfig (Configures A/B settings)
-- YouTimeStamp (Copy video URL with timestamp from video overlay)
-- YouSlider (Customizes video slider and scrubber)
-- YouChooseQuality (Auto select the video quality from your scenario)
-- YouShare (Copy video URL from video overlay)
-- Gonerino (Filter videos/channels/keywords that you don't want them to show up on your feed)
-- And Much more...
+
+### Core Features (Always Included)
+- **YTLite** - Download videos, no ads, background playback, and more
+- **YouGroupSettings** - Organizes settings into grouped sections
+- **YTVideoOverlay** - Video overlay functionality
+- **YTABGoodies** - Additional A/B test configurations
+- **Alderis** - Color picker for customization
+
+### Optional Features
+
+#### Enabled by Default
+- **YouPiP** - Picture in Picture mode support
+- **YTUHD** - Unlock higher quality video options
+- **Return YouTube Dislikes** - Restores the dislike counter
+- **DontEatMyContent** - Prevents video description truncation
+- **YouTimeStamp** - Copy video URL with timestamp from video overlay
+- **YouLoop** - Loop video button in video overlay
+
+#### Disabled by Default
+- **YTABConfig** - Configures A/B settings
+- **YouMute** - Mute the video sounds in video overlay
+- **YouSpeed** - Change video speeds in video overlay
+- **YouSlider** - Customizes video slider and scrubber
+- **YouQuality** - Quick quality selection controls
+- **YouChooseQuality** - Auto select the video quality from your scenario
+- **YouShare** - Copy video URL from video overlay
+- **Gonerino** - Filter videos/channels/keywords that you don't want them to show up on your feed
+- **YTSilentVote** - Vote on videos without visual feedback
+
+> **Note:** When using the **Build YTLitePlusEXTRA IPA** workflow, you can enable or disable optional features during the build process.
 
 ## FAQ
 [Here](FAQs/FAQ_EN.md)
@@ -34,7 +54,22 @@ There are still some bugs in settings that 2 Gonerino are showing up.
 > 2. On your forked repository, go to **Repository Settings** > **Actions**, enable **Read and Write** permissions.
 
 <details>
-  <summary>How to build a YTLitePlusEXTRA IPA</summary>
+  <summary>How to build a YTLitePlusEXTRA IPA (Recommended - Customizable)</summary>
+  <ol>
+    <li>Click on <strong>Sync fork</strong>, and if your branch is out-of-date, click on <strong>Update branch</strong>.</li>
+    <li>Navigate to the <strong>Actions tab</strong> in your forked repository and select <strong>Build YTLitePlusEXTRA IPA</strong>.</li>
+    <li>Click the <strong>Run workflow</strong> button located on the right side.</li>
+    <li>Get a decrypted .ipa file (I cannot provide this due to legal reasons.), then upload it to a file provider (e.g., filebin.net, catbox.moe, or Dropbox is recommended). Paste the URL of the decrypted IPA file in the provided field.</li>
+    <strong>NOTE:</strong> Make sure to provide a direct download link to the file, not a link to a webpage. Otherwise, the process will fail.
+    <li>Select which optional features you want to include by checking/unchecking the feature toggles.</li>
+    <li>Enter the tweak version from the releases (the latest release is selected by default.). You can also change the BundleID and Display Name if desired.</li>
+    <li>Make sure all inputs are correct, then click <strong>Run workflow</strong> to start the process.</li>
+    <li>Wait for the build to finish. You can download the YTLitePlusEXTRA IPA from the releases section of your forked repo. (If you can't find the releases section, go to your forked repo and add /releases to the URL, i.e., github.com/yourusername/YTLitePlusEXTRA/releases.)</li>
+  </ol>
+</details>
+
+<details>
+  <summary>How to build a YTLitePlusEXTRA IPA (All Features Included)</summary>
   <ol>
     <li>Click on <strong>Sync fork</strong>, and if your branch is out-of-date, click on <strong>Update branch</strong>.</li>
     <li>Navigate to the <strong>Actions tab</strong> in your forked repository and select <strong>Build and Release YTLitePlusEXTRA IPA.</strong></li>
