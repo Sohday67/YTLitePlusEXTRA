@@ -31,7 +31,7 @@ There are still some bugs in settings that 2 Gonerino are showing up.
 
 #### Disabled by Default
 - **YTABConfig** - Configures A/B settings
-- **DontEatMyContent** - Prevents video description truncation
+- **DontEatMyContent** - Prevents notch/Dynamic Island from covering video content
 - **YouMute** - Mute the video sounds in video overlay
 - **YouSpeed** - Change video speeds in video overlay
 - **YouSlider** - Customizes video slider and scrubber
