@@ -1,4 +1,4 @@
-name: Build YTLitePlusEXTRA IPA
+name: Custom Build YTLitePlusEXTRA IPA
 on:
   workflow_dispatch:
     inputs:
@@ -20,29 +20,29 @@ on:
         required: true
         default: true
 
-      enable_demc:
-        description: "Integrate DontEatMyContent"
-        type: boolean
-        required: true
-        default: false
-
       enable_youtimestamp:
         description: "Integrate YouTimeStamp"
         type: boolean
         required: true
         default: true
 
-      enable_ytabconfig:
-        description: "Integrate YTABConfig"
-        type: boolean
-        required: true
-        default: false
-
       enable_youloop:
         description: "Integrate YouLoop"
         type: boolean
         required: true
         default: true
+
+      enable_demc:
+        description: "Integrate DontEatMyContent"
+        type: boolean
+        required: true
+        default: false
+
+      enable_ytabconfig:
+        description: "Integrate YTABConfig"
+        type: boolean
+        required: true
+        default: false
 
       enable_youmute:
         description: "Integrate YouMute"
@@ -140,7 +140,7 @@ concurrency:
 
 jobs:
   build:
-    name: Build YTLitePlusEXTRA IPA
+    name: Custom Build YTLitePlusEXTRA IPA
     runs-on: macos-latest
     permissions:
       contents: write
