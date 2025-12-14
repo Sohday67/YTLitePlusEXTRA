@@ -2,6 +2,96 @@ name: Build YTLitePlusEXTRA IPA
 on:
   workflow_dispatch:
     inputs:
+      enable_youpip:
+        description: "Integrate YouPiP"
+        type: boolean
+        required: true
+        default: true
+
+      enable_ytuhd:
+        description: "Integrate YTUHD"
+        type: boolean
+        required: true
+        default: true
+
+      enable_ryd:
+        description: "Integrate Return YouTube Dislikes"
+        type: boolean
+        required: true
+        default: true
+
+      enable_demc:
+        description: "Integrate DontEatMyContent"
+        type: boolean
+        required: true
+        default: false
+
+      enable_youtimestamp:
+        description: "Integrate YouTimeStamp"
+        type: boolean
+        required: true
+        default: true
+
+      enable_ytabconfig:
+        description: "Integrate YTABConfig"
+        type: boolean
+        required: true
+        default: false
+
+      enable_youloop:
+        description: "Integrate YouLoop"
+        type: boolean
+        required: true
+        default: true
+
+      enable_youmute:
+        description: "Integrate YouMute"
+        type: boolean
+        required: true
+        default: false
+
+      enable_youspeed:
+        description: "Integrate YouSpeed"
+        type: boolean
+        required: true
+        default: false
+
+      enable_youslider:
+        description: "Integrate YouSlider"
+        type: boolean
+        required: true
+        default: false
+
+      enable_youquality:
+        description: "Integrate YouQuality"
+        type: boolean
+        required: true
+        default: false
+
+      enable_youchoose:
+        description: "Integrate YouChooseQuality"
+        type: boolean
+        required: true
+        default: false
+
+      enable_youshare:
+        description: "Integrate YouShare"
+        type: boolean
+        required: true
+        default: false
+
+      enable_gonerino:
+        description: "Integrate Gonerino"
+        type: boolean
+        required: true
+        default: false
+
+      enable_ytsilentvote:
+        description: "Integrate YTSilentVote"
+        type: boolean
+        required: true
+        default: false
+
       ipa_url:
         description: "URL to the decrypted IPA file"
         default: ""
@@ -65,7 +155,7 @@ jobs:
       - name: Hide Sensitive Inputs
         uses: levibostian/action-hide-sensitive-inputs@v1
         with:
-          exclude_inputs: bundle_id,display_name,ytlite_version,draft_release,upload_artifact,catbox_upload
+          exclude_inputs: bundle_id,display_name,ytlite_version,draft_release,upload_artifact,catbox_upload,enable_youpip,enable_ytuhd,enable_ryd,enable_demc,enable_youtimestamp,enable_ytabconfig,enable_youloop,enable_youmute,enable_youspeed,enable_youslider,enable_youquality,enable_youchoose,enable_youshare,enable_gonerino,enable_ytsilentvote
           
       - name: Download and Validate IPA
         run: |
@@ -136,12 +226,15 @@ jobs:
           THEOS: ${{ github.workspace }}/theos
 
       - name: Clone YouPiP
+        if: ${{ inputs.enable_youpip }}
         run: git clone --quiet https://github.com/PoomSmart/YouPiP.git
     
       - name: Clone YTUHD
+        if: ${{ inputs.enable_ytuhd }}
         run: git clone --quiet https://github.com/Tonwalter888/YTUHD.git
            
       - name: Clone Return-YouTube-Dislikes
+        if: ${{ inputs.enable_ryd }}
         run: git clone --quiet https://github.com/PoomSmart/Return-YouTube-Dislikes.git
 
       - name: Clone YouGroupSettings
@@ -151,48 +244,61 @@ jobs:
         run: git clone --quiet https://github.com/PoomSmart/YTVideoOverlay.git
           
       - name: Clone YTABConfig
+        if: ${{ inputs.enable_ytabconfig }}
         run: git clone --quiet https://github.com/PoomSmart/YTABConfig.git
                   
       - name: Clone YouQuality
+        if: ${{ inputs.enable_youquality }}
         run: git clone --quiet https://github.com/PoomSmart/YouQuality.git
 
       - name: Clone YouSpeed
+        if: ${{ inputs.enable_youspeed }}
         run: git clone --quiet https://github.com/PoomSmart/YouSpeed.git
 
       - name: Clone DontEatMyContent
+        if: ${{ inputs.enable_demc }}
         run: git clone --quiet https://github.com/therealFoxster/DontEatMyContent.git
 
       - name: Clone YouMute
+        if: ${{ inputs.enable_youmute }}
         run: git clone --quiet https://github.com/PoomSmart/YouMute.git
 
       - name: Clone YTABGoodies
         run: git clone --quiet https://github.com/PoomSmart/YTABGoodies.git
 
       - name: Clone YouTimeStamp
+        if: ${{ inputs.enable_youtimestamp }}
         run: git clone --quiet https://github.com/Tonwalter888/YouTimeStamp.git
     
       - name: Clone YouLoop
+        if: ${{ inputs.enable_youloop }}
         run: git clone --quiet https://github.com/Tonwalter888/YouLoop.git
 
       - name: Clone Alderis
         run: git clone --quiet https://github.com/hbang/Alderis.git
 
       - name: Clone YouSlider
+        if: ${{ inputs.enable_youslider }}
         run: git clone --quiet https://github.com/PoomSmart/YouSlider.git
 
       - name: Clone YouChooseQuality
+        if: ${{ inputs.enable_youchoose }}
         run: git clone --quiet https://github.com/PoomSmart/YouChooseQuality.git
 
       - name: Clone YTSilentVote
+        if: ${{ inputs.enable_ytsilentvote }}
         run: git clone --quiet https://github.com/PoomSmart/YTSilentVote.git
 
       - name: Clone YouShare
+        if: ${{ inputs.enable_youshare }}
         run: git clone --quiet https://github.com/Tonwalter888/YouShare.git
 
       - name: Clone Gonerino
+        if: ${{ inputs.enable_gonerino }}
         run: git clone --quiet https://github.com/castdrian/Gonerino.git
       
       - name: Build YouPiP
+        if: ${{ inputs.enable_youpip }}
         run: |
           cd YouPiP
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
@@ -201,6 +307,7 @@ jobs:
           THEOS: ${{ github.workspace }}/theos    
 
       - name: Build YTUHD
+        if: ${{ inputs.enable_ytuhd }}
         run: |
           cd YTUHD
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
@@ -209,6 +316,7 @@ jobs:
           THEOS: ${{ github.workspace }}/theos
 
       - name: Build Return-YouTube-Dislikes
+        if: ${{ inputs.enable_ryd }}
         run: |
           cd Return-YouTube-Dislikes
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
@@ -233,6 +341,7 @@ jobs:
           THEOS: ${{ github.workspace }}/theos
 
       - name: Build YTABConfig
+        if: ${{ inputs.enable_ytabconfig }}
         run: |
           cd YTABConfig
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
@@ -241,6 +350,7 @@ jobs:
           THEOS: ${{ github.workspace }}/theos
 
       - name: Build YouQuality
+        if: ${{ inputs.enable_youquality }}
         run: |
           cd YouQuality
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
@@ -249,6 +359,7 @@ jobs:
           THEOS: ${{ github.workspace }}/theos
 
       - name: Build YouSpeed
+        if: ${{ inputs.enable_youspeed }}
         run: |
           cd YouSpeed
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
@@ -257,6 +368,7 @@ jobs:
           THEOS: ${{ github.workspace }}/theos
 
       - name: Build DontEatMyContent
+        if: ${{ inputs.enable_demc }}
         run: |
           cd DontEatMyContent
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
@@ -265,6 +377,7 @@ jobs:
           THEOS: ${{ github.workspace }}/theos
 
       - name: Build YouMute
+        if: ${{ inputs.enable_youmute }}
         run: |
           cd YouMute
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
@@ -281,6 +394,7 @@ jobs:
           THEOS: ${{ github.workspace }}/theos
 
       - name: Build YouTimeStamp
+        if: ${{ inputs.enable_youtimestamp }}
         run: |
           cd YouTimeStamp
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
@@ -289,6 +403,7 @@ jobs:
           THEOS: ${{ github.workspace }}/theos
 
       - name: Build YouLoop
+        if: ${{ inputs.enable_youloop }}
         run: |
           cd YouLoop
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
@@ -297,6 +412,7 @@ jobs:
           THEOS: ${{ github.workspace }}/theos
 
       - name: Build YouSlider
+        if: ${{ inputs.enable_youslider }}
         run: |
           cd YouSlider
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
@@ -313,6 +429,7 @@ jobs:
           THEOS: ${{ github.workspace }}/theos
 
       - name: Build YouChooseQuality
+        if: ${{ inputs.enable_youchoose }}
         run: |
           cd YouChooseQuality
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
@@ -321,6 +438,7 @@ jobs:
           THEOS: ${{ github.workspace }}/theos
 
       - name: Build YTSilentVote
+        if: ${{ inputs.enable_ytsilentvote }}
         run: |
           cd YTSilentVote
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
@@ -329,6 +447,7 @@ jobs:
           THEOS: ${{ github.workspace }}/theos  
 
       - name: Build YouShare
+        if: ${{ inputs.enable_youshare }}
         run: |
           cd YouShare
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
@@ -337,6 +456,7 @@ jobs:
           THEOS: ${{ github.workspace }}/theos
           
       - name: Build Gonerino
+        if: ${{ inputs.enable_gonerino }}
         run: |
           cd Gonerino
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
@@ -382,7 +502,7 @@ jobs:
           files: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.ytlite_version }}.ipa
           draft: true
 
-      - name: Job Summary - Build Conplete
+      - name: Job Summary - Build Complete
         run: |
           echo -e '### 🛠️ Build YTLitePlusEXTRA IPA Complete!' >> $GITHUB_STEP_SUMMARY
 
