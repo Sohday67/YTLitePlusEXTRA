@@ -268,7 +268,7 @@ jobs:
 
       - name: Clone YouTimeStamp
         if: ${{ inputs.enable_youtimestamp }}
-        run: git clone --quiet https://github.com/Tonwalter888/YouTimeStamp.git
+        run: git clone --quiet https://github.com/Sohday67/YouTimeStamp.git
     
       - name: Clone YouLoop
         if: ${{ inputs.enable_youloop }}

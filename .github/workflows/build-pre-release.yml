@@ -185,7 +185,7 @@ jobs:
         run: git clone --quiet https://github.com/PoomSmart/YTABGoodies.git
 
       - name: Clone YouTimeStamp
-        run: git clone --quiet https://github.com/Tonwalter888/YouTimeStamp.git
+        run: git clone --quiet https://github.com/Sohday67/YouTimeStamp.git
     
       - name: Clone YouLoop
         run: git clone --quiet https://github.com/Tonwalter888/YouLoop.git
