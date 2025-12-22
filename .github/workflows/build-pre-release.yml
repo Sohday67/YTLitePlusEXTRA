@@ -359,6 +359,14 @@ jobs:
           mv packages/*.deb ${{ github.workspace }}/gonerino.deb
         env:
           THEOS: ${{ github.workspace }}/theos
+
+      - name: Build IAmYouTube
+        run: |
+          cd IAmYouTube
+          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          mv packages/*.deb ${{ github.workspace }}/imyt.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
   
       - name: Inject Tweaks Into IPA
         run: |
