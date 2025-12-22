@@ -188,6 +188,9 @@ jobs:
 
       - name: Clone Gonerino
         run: git clone --quiet https://github.com/castdrian/Gonerino.git
+
+      - name: Clone IAmYouTube
+        run: git clone --quiet https://github.com/PoomSmart/IAmYouTube.git
       
       - name: Build YouPiP
         run: |
@@ -330,6 +333,14 @@ jobs:
           cd Gonerino
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/gonerino.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+      - name: Build IAmYouTube
+        run: |
+          cd IAmYouTube
+          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          mv packages/*.deb ${{ github.workspace }}/imyt.deb
         env:
           THEOS: ${{ github.workspace }}/theos
   
