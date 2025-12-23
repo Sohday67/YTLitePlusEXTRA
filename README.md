@@ -28,10 +28,10 @@ There are still some bugs in settings that 2 Gonerino are showing up.
 - **Return YouTube Dislikes** - Restores the dislike counter
 - **YouTimeStamp** - Copy video URL with timestamp from video overlay
 - **YouLoop** - Loop video button in video overlay
+- **DontEatMyContent** - Prevents notch/Dynamic Island from covering video content
 
 #### Disabled by Default
 - **YTABConfig** - Configures A/B settings
-- **DontEatMyContent** - Prevents notch/Dynamic Island from covering video content
 - **YouMute** - Mute the video sounds in video overlay
 - **YouSpeed** - Change video speeds in video overlay
 - **YouSlider** - Customizes video slider and scrubber
