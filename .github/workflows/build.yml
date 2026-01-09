@@ -92,6 +92,12 @@ on:
         required: true
         default: false
 
+      enable_youskipsilence:
+        description: "Integrate YouSkipSilence"
+        type: boolean
+        required: true
+        default: true
+
       ipa_url:
         description: "URL to the decrypted IPA file"
         default: ""
@@ -155,7 +161,7 @@ jobs:
       - name: Hide Sensitive Inputs
         uses: levibostian/action-hide-sensitive-inputs@v1
         with:
-          exclude_inputs: bundle_id,display_name,ytlite_version,draft_release,upload_artifact,catbox_upload,enable_youpip,enable_ytuhd,enable_ryd,enable_demc,enable_youtimestamp,enable_ytabconfig,enable_youloop,enable_youmute,enable_youspeed,enable_youslider,enable_youquality,enable_youchoose,enable_youshare,enable_gonerino,enable_ytsilentvote
+          exclude_inputs: bundle_id,display_name,ytlite_version,draft_release,upload_artifact,catbox_upload,enable_youpip,enable_ytuhd,enable_ryd,enable_demc,enable_youtimestamp,enable_ytabconfig,enable_youloop,enable_youmute,enable_youspeed,enable_youslider,enable_youquality,enable_youchoose,enable_youshare,enable_gonerino,enable_ytsilentvote,enable_youskipsilence
           
       - name: Download and Validate IPA
         run: |
@@ -296,6 +302,10 @@ jobs:
       - name: Clone Gonerino
         if: ${{ inputs.enable_gonerino }}
         run: git clone --quiet https://github.com/castdrian/Gonerino.git
+
+      - name: Clone YouSkipSilence
+        if: ${{ inputs.enable_youskipsilence }}
+        run: git clone --quiet https://github.com/Sohday67/YouSkipSilence.git
 
       - name: Clone IAmYouTube
         run: git clone --quiet https://github.com/PoomSmart/IAmYouTube.git
@@ -464,6 +474,15 @@ jobs:
           cd Gonerino
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/gonerino.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+      - name: Build YouSkipSilence
+        if: ${{ inputs.enable_youskipsilence }}
+        run: |
+          cd YouSkipSilence
+          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          mv packages/*.deb ${{ github.workspace }}/youskipsilence.deb
         env:
           THEOS: ${{ github.workspace }}/theos
 
