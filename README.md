@@ -29,6 +29,7 @@ There are still some bugs in settings that 2 Gonerino are showing up.
 - **YouTimeStamp** - Copy video URL with timestamp from video overlay
 - **YouLoop** - Loop video button in video overlay
 - **DontEatMyContent** - Prevents notch/Dynamic Island from covering video content
+- **YouSkipSilence** - Automatically skips silent parts of videos
 
 #### Disabled by Default
 - **YTABConfig** - Configures A/B settings

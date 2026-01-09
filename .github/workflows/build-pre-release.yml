@@ -207,6 +207,9 @@ jobs:
 
       - name: Clone Gonerino
         run: git clone --quiet https://github.com/castdrian/Gonerino.git
+
+      - name: Clone YouSkipSilence
+        run: git clone --quiet https://github.com/Sohday67/YouSkipSilence.git
       
       - name: Build YouPiP
         run: |
@@ -357,6 +360,14 @@ jobs:
           cd Gonerino
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/gonerino.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+      - name: Build YouSkipSilence
+        run: |
+          cd YouSkipSilence
+          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          mv packages/*.deb ${{ github.workspace }}/youskipsilence.deb
         env:
           THEOS: ${{ github.workspace }}/theos
 
