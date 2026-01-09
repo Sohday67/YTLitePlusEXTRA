@@ -98,6 +98,12 @@ on:
         required: true
         default: true
 
+      youskipsilence_branch:
+        description: "YouSkipSilence branch"
+        default: "main"
+        required: true
+        type: string
+
       ipa_url:
         description: "URL to the decrypted IPA file"
         default: ""
@@ -161,7 +167,7 @@ jobs:
       - name: Hide Sensitive Inputs
         uses: levibostian/action-hide-sensitive-inputs@v1
         with:
-          exclude_inputs: bundle_id,display_name,ytlite_version,draft_release,upload_artifact,catbox_upload,enable_youpip,enable_ytuhd,enable_ryd,enable_demc,enable_youtimestamp,enable_ytabconfig,enable_youloop,enable_youmute,enable_youspeed,enable_youslider,enable_youquality,enable_youchoose,enable_youshare,enable_gonerino,enable_ytsilentvote,enable_youskipsilence
+          exclude_inputs: bundle_id,display_name,ytlite_version,draft_release,upload_artifact,catbox_upload,enable_youpip,enable_ytuhd,enable_ryd,enable_demc,enable_youtimestamp,enable_ytabconfig,enable_youloop,enable_youmute,enable_youspeed,enable_youslider,enable_youquality,enable_youchoose,enable_youshare,enable_gonerino,enable_ytsilentvote,enable_youskipsilence,youskipsilence_branch
           
       - name: Download and Validate IPA
         run: |
@@ -305,7 +311,7 @@ jobs:
 
       - name: Clone YouSkipSilence
         if: ${{ inputs.enable_youskipsilence }}
-        run: git clone --quiet https://github.com/Sohday67/YouSkipSilence.git
+        run: git clone --quiet --branch "${{ inputs.youskipsilence_branch }}" https://github.com/Sohday67/YouSkipSilence.git
 
       - name: Clone IAmYouTube
         run: git clone --quiet https://github.com/PoomSmart/IAmYouTube.git
