@@ -149,7 +149,7 @@ jobs:
         run: git clone --quiet --depth=1 https://github.com/Sohday67/YouTimeStamp.git
 
       - name: Clone YouHideIsland
-        run: git clone --quiet --depth=1 https://github.com/middsave/YouHideIsland.git
+        run: git clone --quiet --depth=1 https://github.com/Sohday67/YouHideIsland.git
         
       - name: Build YouPiP
         run: |
